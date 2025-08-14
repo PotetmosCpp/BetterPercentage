@@ -1,0 +1,48 @@
+{
+	"geode": "4.7.0",
+	"gd": {
+		"win": "2.2074",
+		"android": "2.2074",
+		"mac": "2.2074",
+		"ios": "2.2074"
+	},
+	"id": "developer.better_percentage",
+	"name": "Better Percentage",
+	"version": "v1.0.0",
+	"developer": "developer",
+	"description": "",
+	"settings": {
+		"decimals": {
+			"name": "Decimals",
+			"type": "int",
+			"default": 2
+		},
+		"show-percent-symbol": {
+			"name": "Show Percent Symbol",
+			"type": "bool",
+			"default": true
+		},
+
+		"show-run-from": {
+			"name": "Show Run From",
+			"type": "bool",
+			"default": true
+		},
+		"hide-run-from-from-zero": {
+			"name": "Hide Run From From 0",
+			"type": "bool",
+			"default": true
+		},
+
+		"show-best-run": {
+			"name": "Show Best Run",
+			"type": "bool",
+			"default": true
+		},
+		"show-level-best-from-zero": {
+			"name": "Show Level Best From Zero",
+			"type": "bool",
+			"default": true
+		}
+	}
+}
