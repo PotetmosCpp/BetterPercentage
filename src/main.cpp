@@ -4,6 +4,7 @@
 using namespace geode::prelude;
 
 //TODO: add realtime new best option maybe idk
+// also change best on level beat or something idk
 
 class $modify(PlayLayer) {
 	struct Fields {

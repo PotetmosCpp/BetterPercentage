@@ -11,6 +11,7 @@
 	"version": "v1.0.0",
 	"developer": "developer",
 	"description": "",
+
 	"settings": {
 		"decimals": {
 			"name": "Decimals",
@@ -23,6 +24,10 @@
 			"default": true
 		},
 
+		"run-from-settings-title": {
+			"name": "Run From Settings",
+			"type": "title"
+		},
 		"show-run-from": {
 			"name": "Show Run From",
 			"type": "bool",
@@ -34,6 +39,10 @@
 			"default": true
 		},
 
+		"best-run-settings-title": {
+			"name": "Best Run Settings",
+			"type": "title"
+		},
 		"show-best-run": {
 			"name": "Show Best Run",
 			"type": "bool",
