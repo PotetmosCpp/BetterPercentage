@@ -37,7 +37,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 		if (!m_fields->m_decimalPercentages) return;
 
 		std::string savedValueKey = MyPlayLayer::getDPSavedValueKey(level);
-		if (!m_fields->m_decimalPercentages->hasSavedValue<float>(savedValueKey)) return;
+		if (!m_fields->m_decimalPercentages->hasSavedValue(savedValueKey)) return;
 
 		m_fields->m_decimalPercentagesPercent = m_fields->m_decimalPercentages->getSavedValue<float>(savedValueKey);
 	}
@@ -68,7 +68,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 		if (!m_fields->m_decimalPercentages || !m_level) return;
 
 		std::string savedValueKey = MyPlayLayer::getDPSavedValueKey(m_level);
-		if (!m_fields->m_decimalPercentages->hasSavedValue<float>(savedValueKey)) return;
+		if (!m_fields->m_decimalPercentages->hasSavedValue(savedValueKey)) return;
 
 		m_fields->m_decimalPercentagesPercent = m_fields->m_decimalPercentages->getSavedValue<float>(savedValueKey);
 	}
