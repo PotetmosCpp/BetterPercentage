@@ -99,7 +99,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 
 		auto normalPercentAsString = geode::utils::numToString(m_level->m_normalPercent);
 
-		if (m_fields->hasDecimalPercentages) {
+		if (m_fields->m_decimalPercentages) {
 			normalPercentAsString = geode::utils::numToString(m_fields->m_decimalPercentagesPercent);
 		}
 
