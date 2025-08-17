@@ -48,6 +48,7 @@ class $modify(PlayLayer) {
 		auto hideRunFromFromZero = Mod::get()->getSettingValue<bool>("hide-run-from-from-zero");
 
 		auto showBestRun = Mod::get()->getSettingValue<bool>("show-best-run");
+		auto hideBestRunFromZero = Mod::get()->getSettingValue<bool>("hide-best-run-from-zero");
 		auto showLevelBestFromZero = Mod::get()->getSettingValue<bool>("show-level-best-from-zero");
 
 		auto formatNumber = [decimals](double value) {
@@ -63,7 +64,7 @@ class $modify(PlayLayer) {
 			)
 			: "";
 
-		auto bestRun = (showBestRun)
+		auto bestRun = (showBestRun && !(m_fields->m_runFrom == 0 && hideBestRunFromZero))
 			? ((m_fields->m_runFrom == 0 && showLevelBestFromZero)
 				? "/" + std::to_string(m_level->m_normalPercent)
 				: ((m_fields->m_bestRunEnds.count(m_fields->m_runFrom))

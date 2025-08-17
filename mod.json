@@ -6,15 +6,20 @@
 		"mac": "2.2074",
 		"ios": "2.2074"
 	},
-	"id": "developer.better_percentage",
+	"id": "potetmoscpp.better_percentage",
 	"name": "Better Percentage",
 	"version": "v1.0.0",
-	"developer": "developer",
-	"description": "",
+	"developer": "potetmoscpp",
+	"description": "More percentage options",
+	"tags": [
+		"gameplay",
+		"enhancement"
+	],
 
 	"settings": {
 		"decimals": {
 			"name": "Decimals",
+			"description": "Amount of decimal places on the percentage",
 			"type": "int",
 			"default": 2
 		},
@@ -30,13 +35,16 @@
 		},
 		"show-run-from": {
 			"name": "Show Run From",
+			"description": "Shows the run start next to the progress percentage",
 			"type": "bool",
 			"default": true
 		},
 		"hide-run-from-from-zero": {
 			"name": "Hide Run From From 0",
+			"description": "Hides the run start when playing from 0%",
 			"type": "bool",
-			"default": true
+			"default": true,
+			"enable-if": "show-run-from"
 		},
 
 		"best-run-settings-title": {
@@ -45,13 +53,23 @@
 		},
 		"show-best-run": {
 			"name": "Show Best Run",
+			"description": "Shows the best run next to the progress percentage",
 			"type": "bool",
 			"default": true
 		},
+		"hide-best-run-from-zero": {
+			"name": "Hide Best Run From Zero",
+			"description": "Hides the best run when playing from 0%",
+			"type": "bool",
+			"default": false,
+			"enable-if": "show-best-run"
+		},
 		"show-level-best-from-zero": {
 			"name": "Show Level Best From Zero",
+			"description": "Shows the level best instead of best run when playing from 0%",
 			"type": "bool",
-			"default": true
+			"default": true,
+			"enable-if": "show-best-run && !hide-best-run-from-zero"
 		}
 	}
 }
