@@ -17,7 +17,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 
 	std::string getDPSavedValueKey(GJGameLevel* level) {
 		if (!level) return "";
-		practice = m_isPracticeMode;
+		bool practice = m_isPracticeMode;
 		if (level->m_levelType == GJLevelType::Editor)
 			return fmt::format("percentage_{}_local_{}", practice ? "practice" : "normal", EditorIDs::getID(level));
 		if (level->m_gauntletLevel)
