@@ -15,13 +15,16 @@
 		"gameplay",
 		"enhancement"
 	],
-
+	"dependencies": {
+		"cvolton.level-id-api": ">=v1.0.1"
+	},
 	"settings": {
 		"decimals": {
 			"name": "Decimals",
 			"description": "Amount of decimal places on the percentage",
 			"type": "int",
-			"default": 2
+			"default": 2,
+			"min": 0
 		},
 		"show-percent-symbol": {
 			"name": "Show Percent Symbol",
