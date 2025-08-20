@@ -9,7 +9,6 @@ using namespace geode::prelude;
 class $modify(MyPlayLayer, PlayLayer) {
 	struct Fields {
 		float m_runFrom;
-		float m_bestRunEnd;
 		std::unordered_map<double, double> m_bestRunEnds;	// dumb name i think idk
 		Mod* m_decimalPercentages = nullptr;
 		float m_decimalPercentagesPercent = 0.f;
@@ -59,13 +58,6 @@ class $modify(MyPlayLayer, PlayLayer) {
 		PlayLayer::resetLevel();
 
 		m_fields->m_runFrom = PlayLayer::getCurrentPercent();
-		/*geode::createQuickPopup(
-			"Title",            // title
-			"suppe",   // content
-			"Nah", "Yeah",      // buttons
-			[](auto, bool btn2) {
-			}
-		);*/
 		if (!m_fields->m_decimalPercentages || !m_level) return;
 
 		std::string savedValueKey = MyPlayLayer::getDPSavedValueKey(m_level);
@@ -87,28 +79,38 @@ class $modify(MyPlayLayer, PlayLayer) {
 		auto hideBestRunFromZero = Mod::get()->getSettingValue<bool>("hide-best-run-from-zero");
 		auto showLevelBestFromZero = Mod::get()->getSettingValue<bool>("show-level-best-from-zero");
 
+		auto seperatorsWithSpacing = Mod::get()->getSettingValue<bool>("seperators-with-spacing");
+
 		auto formatNumber = [decimals](double value) {
 			return fmt::format("{:.{}f}", value, decimals);
+		};
+
+		auto addSpaces = [seperatorsWithSpacing](std::string string) {
+			if (seperatorsWithSpacing) {
+				return " " + string + " ";
+			} else {
+				return string;
+			}
 		};
 
 		auto runFrom = (showRunFrom)
 			? ((m_fields->m_runFrom == 0 && hideRunFromFromZero)
 				? ""
-				: formatNumber(m_fields->m_runFrom) + "-"
+				: formatNumber(m_fields->m_runFrom) + addSpaces("-")
 			)
 			: "";
 
 		auto normalPercentAsString = geode::utils::numToString(m_level->m_normalPercent);
 
-		if (m_fields->m_decimalPercentages) {
-			normalPercentAsString = geode::utils::numToString(m_fields->m_decimalPercentagesPercent);
+		if (m_fields->m_decimalPercentages && m_fields->m_decimalPercentagesPercent != 0) {
+			normalPercentAsString = formatNumber(m_fields->m_decimalPercentagesPercent);
 		}
 
 		auto bestRun = (showBestRun && !(m_fields->m_runFrom == 0 && hideBestRunFromZero))
 			? ((m_fields->m_runFrom == 0 && showLevelBestFromZero)
-				? " / " + normalPercentAsString
+				? addSpaces("/") + normalPercentAsString
 				: ((m_fields->m_bestRunEnds.count(m_fields->m_runFrom))
-			 		? " / " + formatNumber(m_fields->m_bestRunEnds[m_fields->m_runFrom])	// wtf is this
+			 		? addSpaces("/") + formatNumber(m_fields->m_bestRunEnds[m_fields->m_runFrom])	// wtf is this
 					: ""
 				)
 	  		)
@@ -124,5 +126,13 @@ class $modify(MyPlayLayer, PlayLayer) {
 			bestRun +
 			percent
 		).c_str());
+	}
+
+	void levelComplete() {
+		PlayLayer::levelComplete();
+
+		if (m_isPracticeMode) return;
+
+		m_fields->m_bestRunEnds[0] = 100;
 	}
 };

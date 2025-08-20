@@ -20,7 +20,7 @@
 	},
 	"settings": {
 		"decimals": {
-			"name": "Decimals",
+			"name": "Decimal Places",
 			"description": "Amount of decimal places on the percentage",
 			"type": "int",
 			"default": 2,
@@ -30,6 +30,13 @@
 			"name": "Show Percent Symbol",
 			"type": "bool",
 			"default": true
+		},
+		"seperators-with-spacing": {
+			"name": "Seperators With Spacing",
+			"description": "Adds spaces around seperators",
+			"type": "bool",
+			"default": false,
+			"enable-if": "show-run-from || show-best-run"
 		},
 
 		"run-from-settings-title": {
